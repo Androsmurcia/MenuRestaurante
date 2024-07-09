@@ -38,7 +38,7 @@ function MenuItem({ item, handleAddItemClick }) {
             flex-col
             border-b-2 
             border-dotted
-             border-gray-300"
+             border-slate-400"
           >
             <div className="flex flex-row justify-between ">
               <h4 className="text-4x1 text-[#d97706] font-semibold mb-2 capitalize ">
