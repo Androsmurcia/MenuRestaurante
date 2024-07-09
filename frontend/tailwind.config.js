@@ -7,7 +7,7 @@ export default {
         // Colores personalizados
         // 'red': '#CC3300', // Descomenta si necesitas este color
         pink: "rgb(127 29 29)",
-        orange: "#ECB39F",
+        orange: "#f5e2da",
       },
       margin: {
         margin: "0 0.5rem",
@@ -25,6 +25,9 @@ export default {
       },
       display: {
         unset: "unset",
+      },
+      backgroundImage: {
+        restauranteImg: "url('public/images/restaurante.jpg')",
       },
     },
   },

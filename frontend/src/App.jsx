@@ -96,7 +96,7 @@ function App() {
 
   return (
     <main className="font-sans bg-gray-600 text-gray-500 leading-6 text-sm min-h-screen">
-      <section className="menu bg-red-700 pb-1.5 px-0 min-h-screen">
+      <section className="menu bg-orange pb-6 px-0 min-h-screen">
         <div className="bg-red-900 h-40 flex items-center flex-col space-y-2.5 fixed w-full">
           <div>
             <Title />

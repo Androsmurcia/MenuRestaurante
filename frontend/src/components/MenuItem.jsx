@@ -41,7 +41,7 @@ function MenuItem({ item, handleAddItemClick }) {
              border-gray-300"
           >
             <div className="flex flex-row justify-between ">
-              <h4 className="text-4x1 text-[#E69980] mb-2 capitalize ">
+              <h4 className="text-4x1 text-[#d97706] font-semibold mb-2 capitalize ">
                 {item.title}
               </h4>
               <h4 className="price text-[#d97706] mb-2">${item.price}</h4>
@@ -51,12 +51,12 @@ function MenuItem({ item, handleAddItemClick }) {
               onClick={() => handleAddItemClick(item)}
               name="addShoppingCart "
               type="button"
-              className="inline-flex items-center capitalize bg-amber-600 text-white rounded-lg px-2 py-1 my-2"
+              className="inline-flex items-center capitalize bg-pink text-white rounded-lg px-2 py-1 my-2"
             >
               agregar al carrito
             </button>
           </header>
-          <p className="item-text text-[#F2CCBF] text mb-0 pt-4 first-letter:uppercase">
+          <p className="item-text text-[#9c543c] text mb-0 pt-4 first-letter:uppercase">
             {item.desc}
           </p>
         </div>
