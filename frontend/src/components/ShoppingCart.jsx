@@ -19,16 +19,14 @@ function ShoppingCart({
   return (
     <>
       <div className="flex flex-col justify-between ml-4 fixed right-10">
-        <div
-          title="carr"
-          className="nav-car flex flex-row justify-center space-x-4 pb-10 text-2xl"
-        >
+        <div className="nav-car flex flex-row justify-center space-x-4 pb-10 text-2xl">
           <button
             onClick={(e) => {
               e.preventDefault();
               setShowCart((s) => !s);
             }}
-            className="relative flex flex-column justify-between pt-3 pr-2"
+            className="relative flex flex-column justify-between pt-3 pr-2 transition duration-300 ease-in-out transform hover:scale-110 hover:text-white"
+            title="Carrito de compras"
           >
             <FontAwesomeIcon icon={faShoppingCart} />
             <span className="absolute top-0 right-0  mt-1 bg-[#d97706]/90 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
@@ -39,8 +37,30 @@ function ShoppingCart({
           </button>
 
           {/* Agregar al carrito{count}*/}
-          <FontAwesomeIcon icon={faYoutube} className="pt-3" />
-          <FontAwesomeIcon icon={faGithub} className="pt-3" />
+
+          <button
+            className="transition duration-300 ease-in-out transform hover:scale-110 hover:text-white"
+            onClick={(e) => {
+              e.preventDefault();
+              const urlYoutube = "https://www.youtube.com/";
+              window.open(urlYoutube, "_blanck");
+            }}
+            title="Youtube"
+          >
+            <FontAwesomeIcon icon={faYoutube} className="pt-3" />
+          </button>
+
+          <button
+            className="transition duration-300 ease-in-out transform hover:scale-110 hover:text-white"
+            title="GitHub: Andrew Murcia"
+            onClick={(e) => {
+              e.preventDefault();
+              const url = "https://github.com/Androsmurcia";
+              window.open(url, "_blanck");
+            }}
+          >
+            <FontAwesomeIcon icon={faGithub} className="pt-3" />
+          </button>
         </div>
       </div>
       {showCart && (
