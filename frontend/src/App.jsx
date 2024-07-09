@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Title from "./components/Title";
 import ShoppingCart from "./components/ShoppingCart";
 import ConfirmationMessage from "./components/ConfirmationMessage";
+import Footer from "./components/Footer";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -134,6 +135,9 @@ function App() {
         show={showConfirmation}
         onClose={handleCloseConfirmation}
       />
+      <footer>
+        <Footer />
+      </footer>
     </main>
   );
 }

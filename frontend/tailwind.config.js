@@ -6,7 +6,7 @@ export default {
       colors: {
         // Colores personalizados
         // 'red': '#CC3300', // Descomenta si necesitas este color
-        pink: "#4D1300",
+        pink: "rgb(127 29 29)",
         orange: "#ECB39F",
       },
       margin: {
