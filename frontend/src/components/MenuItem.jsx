@@ -28,7 +28,10 @@ function MenuItem({ item, handleAddItemClick }) {
           rounded
           h-24
           md:h-44
-          xl:h-36 xl:rounded-md"
+          xl:h-36 xl:rounded-md
+          transition duration-300 ease-in-out  hover:scale-110 z-0
+
+          "
         />
 
         <div className="item-info md:mt-3.5">
