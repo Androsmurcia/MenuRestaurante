@@ -13,6 +13,9 @@ function App() {
   const [currFilter, setCurrFilter] = useState("all");
   const [cartItems, setCartItems] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showSignupForm, setShowSignupForm] = useState(false);
+
+  // const stateActive = ()={}
 
   useEffect(() => {
     async function fetchItems() {
@@ -98,7 +101,6 @@ function App() {
   return (
     <main className="font-sans bg-gray-600 text-gray-500 leading-6 text-sm min-h-screen">
       <section className="menu bg-orange pb-12 px-0 min-h-screen">
-        <SignupForm />
         <div className="bg-red-900 h-40 flex items-center flex-col space-y-2.5 fixed w-full z-10">
           <div>
             <Title />
@@ -121,6 +123,7 @@ function App() {
               sendItemClick={sendItemClick}
               addSameItem={addSameItem}
               deleteSameItem={deleteSameItem}
+              setShowSignupForm={setShowSignupForm}
             />
           </div>
         </div>
@@ -133,6 +136,7 @@ function App() {
           handleAddItemClick={handleAddItemClick}
         />
       </section>
+      {showSignupForm && <SignupForm setShowSignupForm={setShowSignupForm} />}
       <ConfirmationMessage
         show={showConfirmation}
         onClose={handleCloseConfirmation}
