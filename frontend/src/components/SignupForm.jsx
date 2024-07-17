@@ -1,18 +1,33 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function SignupForm({ setShowSignupForm }) {
+function SignupForm({ setShowSignupForm, setUserInfo }) {
   const [name, setName] = useState("");
   const [address, setAdress] = useState("");
   const [description, setDescription] = useState("");
   const [phone, setPhone] = useState("");
   const [mail, setMail] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const userInfo = {
+      name,
+      address,
+      description,
+      phone,
+      mail,
+    };
+
+    setUserInfo(userInfo);
+    setShowSignupForm(false);
+  };
+
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
         <form
-          action=""
+          onSubmit={handleSubmit}
           className="relative flex flex-col w-4/12 pl-3 py-4 items-center border-2 border-red-950 border-solid bg-red-900 text-white "
         >
           <div className="absolute top-0 right-4 mt-1">
@@ -96,6 +111,7 @@ function SignupForm({ setShowSignupForm }) {
 }
 SignupForm.propTypes = {
   setShowSignupForm: PropTypes.func.isRequired,
+  setUserInfo: PropTypes.func.isRequired,
 };
 
 export default SignupForm;

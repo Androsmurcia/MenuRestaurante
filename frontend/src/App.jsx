@@ -14,6 +14,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSignupForm, setShowSignupForm] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
   // const stateActive = ()={}
 
@@ -48,12 +49,22 @@ function App() {
   };
 
   const sendItemClick = async () => {
+    if (!userInfo) {
+      alert("Please sign up before placing an order.");
+      return;
+    }
+
+    const orderData = {
+      user: userInfo, // Información del usuario
+      items: cartItems,
+    };
+
     const response = await fetch("http://localhost:3000/orders", {
       headers: {
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: JSON.stringify(cartItems),
+      body: JSON.stringify(orderData),
     });
 
     if (!response.ok) {
@@ -136,7 +147,12 @@ function App() {
           handleAddItemClick={handleAddItemClick}
         />
       </section>
-      {showSignupForm && <SignupForm setShowSignupForm={setShowSignupForm} />}
+      {showSignupForm && (
+        <SignupForm
+          setShowSignupForm={setShowSignupForm}
+          setUserInfo={setUserInfo}
+        />
+      )}
       <ConfirmationMessage
         show={showConfirmation}
         onClose={handleCloseConfirmation}
