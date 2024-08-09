@@ -7,15 +7,16 @@ function Cart({
   sendItemClick,
   addSameItem,
   deleteSameItem,
+  cartItems,
 }) {
   return (
-    <div className="flex flex-col justify-start  bg-red-900 rounded-md mt-3 p-1 w-auto overflow-y-scroll h-96 custom-scrollbar fixed right-10 top-40 shadow-md border-amber-600 border-2">
-      <h3 className=" text-amber-400 font-bold text-lg ml-1 pt-3 first-letter:uppercase mt-2">
+    <div className="flex flex-col justify-start items-center bg-red-900 rounded-md mt-3 p-1 pb-2  overflow-y-scroll h-96 custom-scrollbar fixed right-10 top-40 shadow-md border-amber-600 border-2">
+      <h3 className=" text-amber-400 font-bold text-lg  first-letter:uppercase mt-2">
         carrito de compras
       </h3>
 
       {items.length === 0 ? (
-        <div className="emptyCart flex flex-col ml-1 max-w-56 mt-2 text-sm mb-2">
+        <div className="emptyCart flex flex-col ml-1  mt-2 text-sm mb-2">
           <h2 className=" text-amber-600 first-letter:uppercase mb-2">
             tu carrito está vacío.
           </h2>
@@ -24,7 +25,7 @@ function Cart({
           </p>
         </div>
       ) : (
-        <div className="fullCart ml-1 max-w-56">
+        <div className="fullCart  w-4/5 mx-4  ">
           {items.map((item) => (
             <CartItem
               key={item.id}
@@ -35,14 +36,25 @@ function Cart({
               // Pasa las funciones addSameItem, deleteSameItem, deleteItemClick y sendItemClick aquí
             />
           ))}
-          <button
-            className="first-letter:uppercase text-white bg-red-950 rounded-md p-1 mt-1"
-            name="buyItem"
-            type="button"
-            onClick={sendItemClick}
-          >
-            realizar pedido
-          </button>
+          <div className="finalProduct flex justify-around font-medium items-start ">
+            <div>
+              <p className="text-white  bg-red-950 rounded-md py-1 px-1 mr-1 text-center">
+                Total productos:
+              </p>
+              <p className="bg-white rounded-md text-center mr-1 mt-1 text-black">
+                {cartItems.reduce((acc, curr) => acc + curr.count, 0)}
+              </p>
+            </div>
+
+            <button
+              className="first-letter:uppercase text-white bg-red-950 rounded-md px-1 py-1 "
+              name="buyItem"
+              type="button"
+              onClick={sendItemClick}
+            >
+              realizar pedido:
+            </button>
+          </div>
         </div>
       )}
     </div>
@@ -62,6 +74,15 @@ Cart.propTypes = {
   sendItemClick: PropTypes.func.isRequired,
   addSameItem: PropTypes.func.isRequired,
   deleteSameItem: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+      count: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Cart;

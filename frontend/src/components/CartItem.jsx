@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const CartItem = ({ item, addSameItem, deleteSameItem, deleteItemClick }) => {
   return (
-    <div key={item.id} className=" overline mt-1 color text-amber-500">
+    <div key={item.id} className="  mt-2 color text-amber-500 w-full ">
       <h4 className="text-2xl text-white mb-2 capitalize">{item.title}</h4>
       <h4 className="text-white mb-2">{item.price}</h4>
 

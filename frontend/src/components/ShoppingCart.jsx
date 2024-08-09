@@ -73,6 +73,7 @@ function ShoppingCart({
           sendItemClick={sendItemClick}
           addSameItem={addSameItem}
           deleteSameItem={deleteSameItem}
+          cartItems={cartItems}
         />
       )}
     </>
