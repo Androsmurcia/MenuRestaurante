@@ -44,7 +44,7 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
           <h3 className="text-lg">Datos de usuario</h3>
           <label htmlFor="name">Name:</label>
           <input
-            className={`w-4/5  focus:bg-blue-100 pl-2 ${
+            className={`w-4/5  focus:bg-blue-100 pl-2 text-black ${
               name ? "bg-green-100" : ""
             }`}
             type="text"
@@ -56,7 +56,7 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
           <label htmlFor="address">Address:</label>
           <input
             required
-            className={`w-4/5  focus:bg-blue-100 pl-2 ${
+            className={`w-4/5  focus:bg-blue-100 pl-2 text-black ${
               address ? "bg-green-100" : ""
             }`}
             type="text"
@@ -67,7 +67,7 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
           <label htmlFor="description">Description:</label>
           <textarea
             required
-            className={`p-3 w-4/5  focus:bg-blue-100 pl-2  resize-none ${
+            className={`p-3 w-4/5  focus:bg-blue-100 pl-2  resize-none text-black ${
               description ? "bg-green-100" : ""
             }`}
             name="description"
@@ -80,7 +80,7 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
           <label htmlFor="phone">Celphone:</label>
           <input
             required
-            className={`w-4/5  focus:bg-blue-100 pl-2 ${
+            className={`w-4/5  focus:bg-blue-100 pl-2 text-black ${
               phone ? "bg-green-100" : ""
             }`}
             type="tel"
@@ -91,7 +91,7 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
           <label htmlFor="mail">Email:</label>
           <input
             required
-            className={`w-4/5  focus:bg-blue-100 pl-2 ${
+            className={`w-4/5  focus:bg-blue-100 pl-2 text-black ${
               mail ? "bg-green-100" : ""
             }`}
             type="mail"
@@ -102,7 +102,7 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
           <input
             type="submit"
             value="Save Info"
-            className=" border-solid border-cyan-900 border-2 rounded mt-3 px-2 py-1 hover:bg-cyan-600 hover:text-white "
+            className=" border-solid border-cyan-600 border-2 rounded mt-3 px-2 py-1 hover:bg-cyan-600 hover:text-white  "
           />
         </form>
       </div>
