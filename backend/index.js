@@ -1,39 +1,42 @@
 const express = require("express");
-const menu = require("./db/menuData");
-const app = express();
 const cors = require("cors");
-const { v4: uuid } = require("uuid");
+const mongoose = require("mongoose");
+const menu = require("./db/menuData");
+const ordersRouter = require("./routers/orders");
+const usersRouter = require("./routers/users");
+const logger = require("./logger/logger");
+const { requestLogger, errorHandler } = require("./middlewares");
+
+const PORT = 3000;
+const user = "andrewmurciap";
+const password = "zNqPRUPNJuL4kgNO";
+const baseData = "menuProyectoFinal";
+
+const app = express();
+
+mongoose.connect(
+  `mongodb+srv://${user}:${password}@cluster0.8r1sq.mongodb.net/${baseData}?retryWrites=true&w=majority&appName=Cluster0`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 app.use(express.json());
 app.use(cors());
 
-const orders = [];
+app.use(requestLogger);
 
 app.get("/", (req, res) => {
   res.send(menu);
 });
 
-app.post("/orders", (req, res) => {
-  orders.push({ ...req.body, id: uuid() });
-  console.log(orders);
-  res.send(201).send;
-});
+app.use("/orders", ordersRouter);
+app.use("/user", usersRouter);
 
-app.get("/orders", (req, res) => {
-  res.send(orders);
-});
+app.use(errorHandler);
 
-app.delete("/orders/:id", (req, res) => {
-  const index = orders.findIndex((order) => order.id === req.params.id);
-
-  if (index !== -1) {
-    orders.splice(index, 1);
-    res.status(200).send({ message: "Order deleted successfully" });
-  } else {
-    res.status(404).send({ message: "Order not found" });
-  }
-});
-
-app.listen(3000, () => {
-  console.log("FUNCIONANDO EN EL PUERTO 3000");
+app.listen(PORT, () => {
+  logger.info(`Servidor funcionando en el puerto ${PORT}`);
+  console.log(`FUNCIONANDO EN EL PUERTO ${PORT}`);
 });

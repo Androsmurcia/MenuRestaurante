@@ -5,7 +5,7 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
   const [name, setName] = useState("");
   const [address, setAdress] = useState("");
   const [description, setDescription] = useState("");
-  const [phone, setPhone] = useState("");
+  const [celphone, setCelPhone] = useState("");
   const [mail, setMail] = useState("");
 
   const handleSubmit = (e) => {
@@ -15,9 +15,26 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
       name,
       address,
       description,
-      phone,
+      celphone,
       mail,
     };
+
+    fetch("http://localhost:3000/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setUserInfo(data);
+        setShowSignupForm(false);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
     setUserInfo(userInfo);
     setShowSignupForm(false);
@@ -81,12 +98,12 @@ function SignupForm({ setShowSignupForm, setUserInfo }) {
           <input
             required
             className={`w-4/5  focus:bg-blue-100 pl-2 text-black ${
-              phone ? "bg-green-100" : ""
+              celphone ? "bg-green-100" : ""
             }`}
             type="tel"
             id="phone"
             name="phone"
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => setCelPhone(e.target.value)}
           />
           <label htmlFor="mail">Email:</label>
           <input
